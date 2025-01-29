@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour {
     public Rigidbody sphereRigidbody;
+    public ballSpeed = 2f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){
         
@@ -26,7 +27,9 @@ public class BallController : MonoBehaviour {
         if(Input.GetKey(KeyCode.D)){
             inputVector += Vector2.right;
         }
-
+        Vector3 inputXZPlane = new Vector3(inputVector.x, 0, inputVector.y);
         Debug.Log("Resultant Vector: " + inputVector);
+        Debug.Log("Resultant 3D Vector: " + inputXZPlane);
+        sphereRigidbody.AddForce(inputXZPlane * ballSpeed);
     }
 }
